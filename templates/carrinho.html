@@ -5,6 +5,7 @@
 
 {% if carrinho and carrinho|length > 0 %}
     <!-- Tabela de itens do carrinho -->
+     
     <div class="overflow-x-auto">
         <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow">
             <thead>
@@ -15,6 +16,7 @@
                 </tr>
             </thead>
             <tbody>
+                
                 {% for item in carrinho %}
                 <tr class="hover:bg-gray-50">
                     <td class="py-2 px-4 border-b">{{ item.nome }}</td>
@@ -28,7 +30,12 @@
                         </form>
                     </td>
                 </tr>
+                
                 {% endfor %}
+                <form action="{{ url_for('remover_tudo') }}" method="post" class="inline">
+                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition">
+                                Remover Tudo
+                            </button>
             </tbody>
         </table>
     </div>
@@ -45,4 +52,5 @@
 <a href="{{ url_for('index') }}" class="inline-block mt-6 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition">
     Continuar comprando
 </a>
+
 {% endblock %}
